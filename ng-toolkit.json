@@ -1,0 +1,18 @@
+{
+  "serverless": {
+    "provider": "aws",
+    "--": [
+      "--save"
+    ],
+    "project": "angular-demo",
+    "skipInstall": false,
+    "directory": ".",
+    "lambdaTS": false,
+    "offline": false,
+    "clientProject": "angular-demo",
+    "serverless": {
+      "aws": {},
+      "gcloud": {}
+    }
+  }
+}

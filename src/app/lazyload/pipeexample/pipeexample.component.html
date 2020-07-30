@@ -1,0 +1,155 @@
+<mat-grid-list cols="2" rowHeight="1:2">
+    <mat-grid-tile>
+        <div>
+            <p ngNonBindable>digitsInfo string Decimal representation options, specified by a string in the following format: minIntegerDigits.minFractionDigits -maxFractionDigits. minIntegerDigits: The minimum number of integer digits before the decimal point. Default
+                is 1. minFractionDigits: The minimum number of digits after the decimal point. Default is 0. maxFractionDigits: The maximum number of digits after the decimal point. Default is 0.</p>
+            <br />
+            <p ngNonBindable>{{ 0.123456 | percent: '2.1-2' }} --1</p>
+            <br />
+            <p>{{ 0.123456 | percent: '2.1-2' }}</p>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <p ngNonBindable>{{ .12 | percent: '2.2-1' }} --1</p>
+            <br />
+            <p>{{ .12 | percent: '2.1-2' }}</p>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <p ngNonBindable>{{ .4298 | percent: '10.4-4' }}</p>
+            <br />
+            <p>{{ .4298 | percent : "1.2-2" }}</p>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+        <div>
+
+            minIntegerDigits: The minimum number of integer digits before the decimal point. Default is 1. minFractionDigits: The minimum number of digits after the decimal point. Default is 2. maxFractionDigits: The maximum number of digits after the decimal point.
+            Default is 2. If not provided, the number will be formatted with the proper amount of digits, depending on what the ISO 4217 specifies. For example, the Canadian dollar has 2 digits, whereas the Chilean peso has none.
+
+            <br />
+            <br />
+            <br />
+            <!--output '$0.26'-->
+            <p>A: {{a | currency}}</p>
+
+            <!--output 'CA$0.26'-->
+            <p>A: {{a | currency:'CAD'}}</p>
+
+            <!--output 'CAD0.26'-->
+            <p>A: {{a | currency:'CAD':'code'}}</p>
+
+            <!--output 'CA$0,001.35'-->
+            <p>B: {{b | currency:'CAD':'symbol':'4.2-2'}}</p>
+
+            <!--output '$0,001.35'-->
+            <p>B: {{b | currency:'CAD':'symbol-narrow':'4.2-2'}}</p>
+
+            <!--output '0 001,35 CA$'-->
+            <!-- <p>B: {{b | currency:'CAD':'symbol':'4.2-2':'fr'}}</p> -->
+
+            <!--output 'CLP1' because CLP has no cents-->
+            <p>B: {{b | currency:'CLP'}}</p>
+        </div>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <div>
+
+                'short': equivalent to 'M/d/yy, h:mm a' (6/15/15, 9:03 AM).
+                <br /> 'medium': equivalent to 'MMM d, y, h:mm:ss a' (Jun 15, 2015, 9:03:01 AM).
+                <br /> 'long': equivalent to 'MMMM d, y, h:mm:ss a z' (June 15, 2015 at 9:03:01 AM GMT+1).
+                <br /> 'full': equivalent to 'EEEE, MMMM d, y, h:mm:ss a zzzz' (Monday, June 15, 2015 at 9:03:01 AM GMT+01:00).
+                <br /> 'shortDate': equivalent to 'M/d/yy' (6/15/15).
+                <br />'mediumDate': equivalent to 'MMM d, y' (Jun 15, 2015).
+                <br />'longDate': equivalent to 'MMMM d, y' (June 15, 2015).
+                <br />'fullDate': equivalent to 'EEEE, MMMM d, y' (Monday, June 15, 2015).<br /> 'shortTime': equivalent to 'h:mm a' (9:03 AM). <br />'mediumTime': equivalent to 'h:mm:ss a' (9:03:01 AM). <br />'longTime': equivalent to 'h:mm:ss a z' (9:03:01
+                AM GMT+1). <br />'fullTime': equivalent to 'h:mm:ss a zzzz' (9:03:01 AM GMT+01:00).
+                <br />
+                <br />
+                <br />
+                <br />
+
+            </div>
+            <p>Today is {{today | date}}</p>
+            <p>Or if you prefer, {{today | date:'fullDate'}}</p>
+            <p>The time is {{today | date:'h:mm a z'}}</p>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            {{ object | json }} {{ object }}
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <p>Object</p>
+            <div *ngFor="let item of object | keyvalue">
+                {{item.key}}:{{item.value}}
+            </div>
+
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <label>Name: </label><input #name (keyup)="change(name.value)" type="text">
+            <p>In lowercase:
+                <pre>'{{value | lowercase}}'</pre>
+                <p>In uppercase:
+                    <pre>'{{value | uppercase}}'</pre>
+                    <p>In titlecase:
+                        <pre>'{{value | titlecase}}'</pre>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <ul>
+                <li *ngFor="let i of collection | slice:1:3">{{i}}</li>
+            </ul>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <span>sso //- {{sdata}}//.
+                {{sdata | json}}//'' ////
+                {{sdata.length}};
+                async{{sdata| async}};
+            </span>
+
+
+            <ng-container *ngFor="let number of sdata1 | async; let i=index ">
+
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>#{{i+1}}</mat-card-title>
+                        <!-- <mat-card-subtitle></mat-card-subtitle> -->
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            r1:{{number.r1}}
+                        </p>
+                        <p>
+
+                            r2 :{{number.r2}}
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <br />
+
+
+            </ng-container>
+
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            {{rangeval | demopipe :2:4}} <br/> {{rangeval | demopipe :9:2}}
+            <br/> {{rangeval | demopipe :87:55}}
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
